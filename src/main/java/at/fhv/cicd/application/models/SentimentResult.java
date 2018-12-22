@@ -13,7 +13,7 @@ public class SentimentResult {
 	/**
 	 * Description of the property confidence.
 	 */
-	public float confidence = null;
+	public float confidence = 0;
 	
 	// Start of user code (user defined attributes)
 	

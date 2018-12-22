@@ -13,7 +13,7 @@ public class HistoryItem {
 	/**
 	 * Description of the property requested.
 	 */
-	public long requested = null;
+	public long requested = 0;
 	
 	/**
 	 * Description of the property result.
