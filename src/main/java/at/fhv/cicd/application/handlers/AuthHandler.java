@@ -10,21 +10,22 @@ public class AuthHandler {
 	// Start of user code (user defined attributes)
 	protected Map<String, at.fhv.cicd.application.models.User> users = new HashMap<>();
 	// End of user code
+	
 
 	private static AuthHandler INSTANCE;
-
-	private AuthHandler() {
-		// singleton
+	
+	private AuthHandler(){
+	    // singleton
 	}
-
-	public static AuthHandler getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new AuthHandler();
-		}
-
-		return INSTANCE;
+	
+	public static AuthHandler getInstance(){
+	    if(INSTANCE == null){
+	        INSTANCE = new AuthHandler();
+	    }
+	
+	    return INSTANCE;
 	}
-
+	
 	public String login(String email) throws Exception {
 		// Start of user code login
 		if (email == null || "".equals(email)) {
@@ -42,7 +43,7 @@ public class AuthHandler {
 		return token;
 		// End of user code
 	}
-
+	
 	public void logout(String token) throws Exception {
 		// Start of user code logout
 		if (token == null || "".equals(token)) {
@@ -51,7 +52,7 @@ public class AuthHandler {
 		users.remove(token);
 		// End of user code
 	}
-
+	
 	// Start of user code (user defined operations)
 	public at.fhv.cicd.application.models.User getUser(String token) throws Exception {
 		if (!users.containsKey(token)) {
@@ -60,5 +61,5 @@ public class AuthHandler {
 		return users.get(token);
 	}
 	// End of user code
-
+	
 }
