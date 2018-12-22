@@ -11,7 +11,7 @@ public class HistoryEndpoint {
 	// End of user code
 	
 	
-	@org.springframework.web.bind.annotation.GetMapping("invalid")
+	@org.springframework.web.bind.annotation.GetMapping("/history")
 	public at.fhv.cicd.application.models.History getHistory(@org.springframework.web.bind.annotation.RequestParam("token") String token) throws Exception {
 		// Start of user code getHistory
 		return null;

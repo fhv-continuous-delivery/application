@@ -11,7 +11,7 @@ public class AnalysisEndpoint {
 	// End of user code
 	
 	
-	@org.springframework.web.bind.annotation.PostMapping("invalid")
+	@org.springframework.web.bind.annotation.PostMapping("/analyze")
 	public at.fhv.cicd.application.models.SentimentResult analyze(@org.springframework.web.bind.annotation.RequestParam("text") String text, @org.springframework.web.bind.annotation.RequestParam("token") String token) throws Exception {
 		// Start of user code analyze
 		return null;
