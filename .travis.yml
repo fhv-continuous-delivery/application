@@ -28,22 +28,7 @@ jobs:
         provider: heroku
         app: fhv-application-staging
         api_key: $HEROKU_API_KEY
-    - stage: automatic user acceptance tests on staging
-      script:
-        - cd ..
-        - "git clone https://github.com/fhv-continuous-delivery/tests.git"
-        - cd tests
-        - mvn verify
-        - cd ..
-        - "git clone https://github.com/fhv-continuous-delivery/docs.git"
-        - rm -rf docs/generated/cukedoctor docs/generated/walk_through.mp4
-        - cp -r tests/target/cukedoctor docs/generated/
-        - cd docs/generated
-        - ../../tests/scripts/get_testingbot_video.py
-        - git add --all
-        - git commit -am "update documentation"
-        - git push "https://${TRAVIS_GITHUB_TOKEN}@github.com/fhv-continuous-delivery/docs.git" master
-    - stage: automatic performance tests on staging
+    - stage: automatic user acceptance and performance tests on staging
       script:
         - cd ..
         - "git clone https://github.com/fhv-continuous-delivery/tests.git"
@@ -51,8 +36,12 @@ jobs:
         - mvn verify jmeter-graph:create-graph
         - cd ..
         - "git clone https://github.com/fhv-continuous-delivery/docs.git"
+        - rm -rf docs/generated/cukedoctor docs/generated/walk_through.mp4
+        - cp -r tests/target/cukedoctor docs/generated/
         - rm -rf docs/generated/jmeter/*
-        - cp -r tests/target/jmeter/results/performance.png docs/generated/jmeter/performance.png
+        - cp tests/target/jmeter/results/performance.png docs/generated/jmeter/performance.png
+        - cd docs/generated
+        - ../../tests/scripts/get_testingbot_video.py
         - git add --all
         - git commit -am "update documentation"
         - git push "https://${TRAVIS_GITHUB_TOKEN}@github.com/fhv-continuous-delivery/docs.git" master
