@@ -14,3 +14,4 @@ Travis CI app is used to build the application. The build needs the following en
 * TRAVIS_GITHUB_TOKEN: This token is used to update the documentation of the project
 * SONAR_TOKEN: This token is used to perform static code analysis within the SonarCloud
 * HEROKU_API_KEY: This token is used to deploy the application to the staging and production environment on heroku
+* PACKAGECLOUD_TOKEN: This token is used to deploy the application to the maven repository
