@@ -43,6 +43,19 @@ jobs:
         - git add --all
         - git commit -am "update documentation"
         - git push "https://${TRAVIS_GITHUB_TOKEN}@github.com/fhv-continuous-delivery/docs.git" master
+    - stage: automatic performance tests on staging
+      script:
+        - cd ..
+        - "git clone https://github.com/fhv-continuous-delivery/tests.git"
+        - cd tests
+        - mvn verify jmeter-graph:create-graph
+        - cd ..
+        - "git clone https://github.com/fhv-continuous-delivery/docs.git"
+        - rm -rf docs/generated/jmeter/*
+        - cp -r tests/target/jmeter/results/performance.png docs/generated/jmeter/performance.png
+        - git add --all
+        - git commit -am "update documentation"
+        - git push "https://${TRAVIS_GITHUB_TOKEN}@github.com/fhv-continuous-delivery/docs.git" master
     - stage: deploy to production
       script: skip
       deploy:
