@@ -33,13 +33,13 @@ jobs:
         - cd ..
         - "git clone https://github.com/fhv-continuous-delivery/tests.git"
         - cd tests
-        - mvn verify jmeter-graph:create-graph
+        - mvn verify
         - cd ..
         - "git clone https://github.com/fhv-continuous-delivery/docs.git"
         - rm -rf docs/generated/cukedoctor docs/generated/walk_through.mp4
         - cp -r tests/target/cukedoctor docs/generated/
-        - rm -rf docs/generated/jmeter/*
-        - cp tests/target/jmeter/results/performance.png docs/generated/jmeter/performance.png
+        - rm -rf docs/generated/jmeter
+        - cp -r tests/target/jmeter/reports/performance* docs/generated/jmeter
         - cd docs/generated
         - ../../tests/scripts/get_testingbot_video.py
         - git add --all
