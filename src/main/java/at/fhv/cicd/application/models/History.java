@@ -8,7 +8,7 @@ public class History {
 	/**
 	 * Description of the property items.
 	 */
-	public java.util.Set<at.fhv.cicd.application.models.HistoryItem> items = new java.util.HashSet<at.fhv.cicd.application.models.HistoryItem>();
+	public java.util.Set<at.fhv.cicd.application.models.HistoryItem> items = new java.util.LinkedHashSet<at.fhv.cicd.application.models.HistoryItem>();
 	
 	// Start of user code (user defined attributes)
 	
